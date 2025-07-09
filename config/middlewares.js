@@ -1,4 +1,3 @@
-
 module.exports = [
   'strapi::errors',
   {
@@ -8,8 +7,8 @@ module.exports = [
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'http:', 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
-          'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
+          'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com', 'market-assets.strapi.io'],
+          'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com', 'market-assets.strapi.io'],
           upgradeInsecureRequests: null,
         },
       },
@@ -19,8 +18,12 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
+      origin: [
+        'http://localhost:1337',
+        'http://localhost:5173',
+        'https://neon-revenue-genesis-68.vercel.app' // Your Vercel App URL
+      ],
       headers: '*',
-      origin: ['*'] // Allow all origins
     }
   },
   'strapi::poweredBy',
